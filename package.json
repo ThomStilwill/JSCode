@@ -1,0 +1,28 @@
+{
+  "name": "jscode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
+    "watch": "karma start --auto-watch --browsers ChromeHeadless karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThomStilwill/JSCode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThomStilwill/JSCode/issues"
+  },
+  "homepage": "https://github.com/ThomStilwill/JSCode#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "karma": "^3.1.3",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-mocha": "^1.3.0",
+    "mocha": "^5.2.0"
+  }
+}
