@@ -1,9 +1,6 @@
-imports * from '../code/utility';
-
 describe('Utility', () => {
     
   describe('exists', () => {
-
     let array = ['Thom','Dick','Harry','Lucy'];
 
       it('should return true if match is in target', () => {
@@ -12,6 +9,5 @@ describe('Utility', () => {
         assert.equal(result,true);
       });
     });
-
-
+    
 });

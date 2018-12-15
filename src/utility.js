@@ -74,7 +74,3 @@ function curry(fn){
         return fn.apply(this,args.concat(Array.prototype.slice.call(arguments,0)));
     }
 }
-
-module.exports = {
-    exists: exists
-}
