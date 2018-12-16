@@ -6,7 +6,7 @@ function exists(array, match){
     })
 }
 
-function func(predicate, list) {
+function find(predicate, list) {
     if(!list) {
         return function _find(ls){
             return find(predicate,ls);
@@ -17,6 +17,7 @@ function func(predicate, list) {
         if(predicate(list[i])){
             return list[i];
         }
+        i++;
     }
 }
 

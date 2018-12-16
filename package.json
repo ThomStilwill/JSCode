@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
-    "watch": "karma start --auto-watch --browsers ChromeHeadless karma.conf.js"
+    "test": "karma start  karma.conf.js --single-run=true --browsers=ChromeHeadless --debug",
+    "watch": "karma start karma.conf.js --auto-watch --browsers Chrome --debug"
   },
   "repository": {
     "type": "git",

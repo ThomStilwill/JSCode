@@ -6,7 +6,7 @@ module.exports = function(config) {
       port: 9876,  // karma web server port
       colors: true,
       logLevel: config.LOG_INFO,
-      autoWatch: false,
+      autoWatch: true,
       // singleRun: false, // Karma captures browsers, runs the tests and exits
       concurrency: Infinity,
       browsers: ['Chrome', 'ChromeHeadless', 'MyHeadlessChrome'],
