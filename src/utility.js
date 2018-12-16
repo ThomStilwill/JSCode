@@ -21,6 +21,25 @@ function find(predicate, list) {
     }
 }
 
+function traverse(predicate,obj){
+    if(Object(obj) !== obj){
+        return null;
+    }
+
+    if(predicate(obj)){
+        return obj;
+    }
+
+    for(var i in obj) {
+        if(obj.hasOwnProperty(i)) {
+            let result = traverse(predicate,obj[i]);
+            if(result){
+                return result;
+            }
+        }
+    }
+}
+
 function where(spec,test) {
     if (!test) {
         return function _where(tst) {
@@ -34,6 +53,7 @@ function where(spec,test) {
             }
         }
     }
+    return true;
 }
 
 function not(f) {

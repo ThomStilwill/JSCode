@@ -32,4 +32,19 @@ describe('Utility', () => {
         assert.equal(result.state,'FL');
       });
     });
+
+    describe('where', () => {
+      let array = [
+        {state: 'CT', region: 'NE'},
+        {state: 'NH', region: 'NE'},
+        {state: 'VT', region: 'NE'},
+        {state: 'FL', region: 'SE'},
+        {state: 'GA', region: 'SE'},
+      ];
+  
+      it('should return item if spec is matched', () => {
+        let result = find(where({region:'SE'}),array);
+        assert.equal(result.state,'FL');
+      });
+    });
 });
