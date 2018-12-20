@@ -1,17 +1,20 @@
 
 
-function exists(array, match){
-    return array.some(function(x){
-        return x === match;
-    })
-}
+exists = (array, match) =>  array.some(x => x === match)
+// function exists(array, match){
+//     return array.some(function(x){
+//         return x === match;
+//     })
+// }
 
-function find(predicate, list) {
-    if(!list) {
+find = (predicate, list) => {
+    
+    if(!list) {  //build in curry
         return function _find(ls){
             return find(predicate,ls);
         }
     }
+
     var i = 0;
     while( i< list.length){
         if(predicate(list[i])){
@@ -21,7 +24,7 @@ function find(predicate, list) {
     }
 }
 
-function traverse(predicate,obj){
+traverse = (predicate,obj) => {
     if(Object(obj) !== obj){
         return null;
     }
@@ -40,7 +43,7 @@ function traverse(predicate,obj){
     }
 }
 
-function where(spec,test) {
+where = (spec,test) => {
     if (!test) {
         return function _where(tst) {
             return where (spec,tst);
@@ -56,42 +59,78 @@ function where(spec,test) {
     return true;
 }
 
-function not(f) {
+not = f=> { 
     return function _negated() {
         return !f.apply(null,arguments);
     }
 }
 
-function prop(x,obj) {
+prop = (key,obj) => {
     if (!obj) {
         return function _prop(obj){
-            return obj[x];
+            return obj[key];
         }
     }
+    return obj[key];
 }
 
-function path(props,obj){
+path = (pathstring,obj) => {
     var i = 0;
     var tmp = obj;
-    while(i<props.length){
+    var props = pathstring.split('.');
+    
+    while(i < props.length){
         if(tmp[props[i]] === undefined){
             return tmp[props[i]];
         }
         tmp = tmp[props[i]];
         i += 1;
     }
+    return tmp;
 }
 
-function tap(proc) {
-    return function(x){
-        proc(x);
-        return x;
-    }
-}
+tap = (fn) => (x) => {
+                    fn(x);
+                    return x;
+                }
 
-function curry(fn){
-    var args = Array.prototype.slice.call(arguments,1);
-    return function(){
-        return fn.apply(this,args.concat(Array.prototype.slice.call(arguments,0)));
+// curry = (f, arr = []) => (...args) => (
+//                     a => a.length === f.length ?
+//                       f(...a) :
+//                       curry(f, a)
+//                   )([...arr, ...args]);
+
+curry = (originalFunction, initialParams = []) => {
+    //debugger;
+    return (...nextParams) => {
+        //debugger;
+        const curriedFunction = (params) => {
+            //debugger;
+            if (params.length === originalFunction.length) {
+                return originalFunction(...params);
+            }
+            return curry(originalFunction, params);
+        };
+        return curriedFunction([...initialParams, ...nextParams]);
+    };
+};
+
+//pipe = (...fns) => x => fns.reduce((v, f) => f(v), x) 
+pipe = (...functions) => (value) => {
+    //debugger;
+    return functions
+      .reduce((currentValue, currentFunction) => {
+         //debugger;
+         return currentFunction(currentValue);
+      }, value)
+  }
+
+//compose = (...fns) => x => fns.reduceRight((v, f) => f(v), x);
+compose = (...functions) => (value) => {
+    //debugger;
+    return functions
+        .reduceRight((currentValue, currentFunction) => {
+            //debugger;
+            return currentFunction(currentValue);
+        }, value)
     }
-}

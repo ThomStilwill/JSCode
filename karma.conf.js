@@ -2,7 +2,7 @@ module.exports = function(config) {
     config.set({
       frameworks: ['mocha', 'chai'],
       files: ['src/**/*.js','test/**/*.js'],
-      reporters: ['progress','mocha','html'],
+      reporters: ['progress','html'],
       client: {
         mocha: {
           reporter: 'html',

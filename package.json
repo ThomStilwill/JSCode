@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start  karma.conf.js --single-run=true --browsers=ChromeHeadless --debug",
-    "watch": "karma start karma.conf.js --auto-watch --browsers Chrome --debug"
+    "watch": "karma start karma.conf.js --auto-watch --browsers Chrome --debug --reporters html,dots"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "karma": "^3.1.3",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.2.0",
+    "karma-html-live-reporter": "^0.2.0",
     "karma-html-reporter": "^0.2.7",
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.5",
